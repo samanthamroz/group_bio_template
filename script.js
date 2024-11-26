@@ -1,33 +1,39 @@
 /**
- * Toggles the display of an individual team member's bio
- * @param {string} bioId - The ID of the bio section to show or hide
+ * Opens the modal with team member information
+ * @param {string} name - Name of the team member
+ * @param {string} role - Role of the team member
+ * @param {string} bio - Bio of the team member
+ * @param {string} imageUrl - URL of the team member's image
  */
-function toggleBio(bioId) {
-    const bio = document.getElementById(bioId);
-    // Toggle between showing and hiding the bio section
-    if (bio.style.display === "none" || bio.style.display === "") {
-        bio.style.display = "block";
-    } else {
-        bio.style.display = "none";
-    }
+function openModal(name, role, bio, imageUrl, galleryImages = []) {
+    document.getElementById("modalName").textContent = name;
+    document.getElementById("modalRole").textContent = role;
+    document.getElementById("modalBio").textContent = bio;
+    document.getElementById("modalImage").src = imageUrl;
+
+    const gallery = document.getElementById("modalGallery");
+    gallery.innerHTML = "";
+    galleryImages.forEach(image => {
+        const imgElement = document.createElement("img");
+        imgElement.src = image;
+        imgElement.alt = "Gallery Image";
+        gallery.appendChild(imgElement);
+    });
+
+    document.getElementById("bioModal").style.display = "flex";
+}
+
+/**
+ * Closes the modal
+ */
+function closeModal() {
+    document.getElementById("bioModal").style.display = "none";
 }
 
 /**
  * Shows the specified section ('bios' or 'vision') and hides the other
- * @param {string} sectionId - The ID of the section to display
  */
 function showSection(sectionId) {
-    const biosSection = document.getElementById("bios");
-    const visionSection = document.getElementById("vision");
-
-    // Display the bios section and hide the vision section
-    if (sectionId === "bios") {
-        biosSection.style.display = "flex";
-        visionSection.style.display = "none";
-    }
-    // Display the vision section and hide the bios section
-    else if (sectionId === "vision") {
-        biosSection.style.display = "none";
-        visionSection.style.display = "block";
-    }
+    document.getElementById("bios").style.display = sectionId === "bios" ? "flex" : "none";
+    document.getElementById("vision").style.display = sectionId === "vision" ? "block" : "none";
 }

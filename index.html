@@ -4,65 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team Bio</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
 <body>
-
 <header>
-    <h1>Meet Our Team</h1>
-    <!-- Example team logo -->
-    <img src="img/team-logo.png" alt="Team Logo" class="team-logo">
-
-    <!-- Navigation menu to switch between sections -->
+    <div class="header-container">
+        <p>meet our team</p>
+        <img src="img/Logo.png" alt="Team Logo" class="team-logo">
+    </div>
     <nav>
         <button onclick="showSection('bios')">Team Bios</button>
         <button onclick="showSection('vision')">Team Vision</button>
     </nav>
 </header>
 
-<!-- Team bios section (default section) -->
 <div id="bios" class="container">
-    <!-- Each card represents an individual team member -->
-    <div class="card">
+    <!-- Cards for team members -->
+    <div class="card" onclick="openModal('Samantha Mroz', 'Frontend Developer', 
+    'Samantha is a senior computer science student at UNCC with a concentration in AI, Robotics, and Gaming. Her programming background is as a video game developer; she has experience as a designer and programmer for several game jam games in a variety of genres, most notably environmental puzzle games. She also has experience teaching programming and video game design as a lead instructor for the educational tech company iD Tech, where she taught C#, C++, and Java programming.', 'img/Samantha.jpg',
+    ['img/idtech.png', 'img/Unity.png', 'img/hollowknight.png'])">
         <h2>Samantha Mroz</h2>
         <p>Frontend Developer</p>
-        <button onclick="toggleBio('bio1')">Show Bio</button>
-        <p id="bio1" class="bio">Samantha is a senior computer science student at UNCC with a concentration in AI, Robotics, and Gaming.
-            Her programming background is as a video game developer; she has experience as a designer and programmer for several game jam
-            games in a variety of genres, most notably environmental puzzle games.
-            She also has experience teaching programming and video game design as a lead instructor for the educational tech company
-            iD Tech, where she taught C#, C++, and Java programming.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="openModal('Buck Buchholz', 'Admin', 
+    'Buck is a senior in his last semester and will graduate in December 2024 with a Computer Science degree. A Star Wars fan and an avid supporter of the LA Chargers. He is passionate about pursuing a career in Salesforce, combining his interest in technology with helping businesses thrive.', 'img/Buck.jpg',
+    ['img/salesforce.png', 'img/chargers.png', 'img/starwars.jpg'])">
         <h2>Buck Buchholz</h2>
         <p>Admin</p>
-        <button onclick="toggleBio('bio2')">Show Bio</button>
-        <p id="bio2" class="bio">Buck is a senior in his last semester and will graduate in December 2024 with a Computer Science degree and a
-            concentration in IT. His expertise is in CRMs and database administration, specifically the popular CRM called Salesforce.</p>
     </div>
-    <div class="card">
-        <h2>Emily Johnson</h2>
+    <div class="card" onclick="openModal('Najwa Hanna', 'UI/UX Designer', 
+    'Najwa is a senior in Computer Science and graduates in December 2024. She was inspired by Ada Lovelace, the first programmer, and mathematician to pursue technology. She has minors in Computer Engineering and Mathematics. Her favourite tool is VS Code and her favourite concepts of data structure and algorithms is graphs because it makes sense.', 'img/Najwa.jpg',
+    ['img/ada.jpg', 'img/vs.jpg', 'img/graph.jpg'])">
+        <h2>Najwa Hanna</h2>
         <p>UI/UX Designer</p>
-        <button onclick="toggleBio('bio3')">Show Bio</button>
-        <p id="bio3" class="bio">Emily is a UI/UX designer with a passion for creating user-friendly interfaces.</p>
     </div>
-    <div class="card">
+    <div class="card" onclick="openModal('Trevor Paden', 'Data Engineer', 
+    'Trevor is a senior computer science major at UNCC with a concentration in data science. He has experience writing in python, java, C, C++, and some risk-V assembly. Trevor spends most of his free time taking care of his plants or animals (fish, reptiles, and cats).', 'img/Trevor.jpg',
+    ['img/regression.jpg', 'img/python.jpg', 'img/plant.jpg'])">
         <h2>Trevor Paden</h2>
         <p>Data Engineer</p>
-        <button onclick="toggleBio('bio4')">Show Bio</button>
-        <p id="bio4" class="bio">Trevor is a senior compuster science major at UNCC with a concentration in data science. He has experience 
-            writing in python, java, C, C++, and some risk-V assembly. Trevor spends most of his free time taking care of his plants or
-             animals (fish, reptiles, and cats). </p>
     </div>
 </div>
 
-<!-- Team vision/mission statement section (hidden by default) -->
-<div id="vision" class="container" style="display: none;">
+<div id="vision" class="vision-container" style="display: none;">
     <h2>Our Mission Statement</h2>
-    <p>We strive to create a collaborative, inclusive, and innovative environment where team members feel empowered to push boundaries and achieve excellence in their craft. Our mission is to deliver high-quality solutions that meet and exceed our clients' expectations.</p>
+    <p>We are committed to building a collaborative and inclusive environment where diverse ideas and skills unite to solve complex problems. Through innovation and teamwork, we aim to design and develop software solutions that are not only functional but also meaningful, scalable, and user-focused. Together, we strive to learn, grow, and contribute to the advancement of technology while embodying excellence, integrity, and creativity in every project we undertake.</p>
 </div>
 
-<script src="script.js"></script> <!-- Link to external JavaScript file -->
+<!-- Modal for team member bios -->
+<div id="bioModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Team Member" class="modal-image">
+        <h2 id="modalName"></h2>
+        <p id="modalRole"></p>
+        <p id="modalBio"></p>
 
+        <div class="gallery" id="modalGallery">
+            <!-- Images will be added dynamically here -->
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
